@@ -30,8 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
-     ;; ----------------------------------------------------------------
+   '(;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
@@ -39,16 +38,21 @@ values."
      (auto-completion :variables auto-completion-enable-snippets-in-popup t)
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
-     ;; parinfer
-     ;; languages
+     ; parinfer
+     ;; languages/distributions
      emacs-lisp
      python
+     (conda :variables
+            conda-anaconda-home "/home/adrian/miniconda3"
+            conda-env-home-directory "/home/adrian/.conda")
+            ;; conda-env-subdirectory "../.conda/envs")
      racket
      ;; document production
      markdown
      latex
      org
      ;; other
+     yaml
      helm
      git
      version-control
@@ -256,6 +260,8 @@ values."
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
    dotspacemacs-mode-line-unicode-symbols t
+   ;; Mode line theme?
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -337,13 +343,15 @@ you should place your code here."
   (setq powerline-default-separator 'arrow)
   (setq org-src-fontify-natively t)
   (setq dired-listing-switches "-alh")
+  (setq org-superstar-headline-bullets-list '("❱" "⟫" "⊙"))
+  ;; ("⑴" "⑵" "⑶")
+  (setq org-agenda-files "~/org/todo.org")
+
   (with-eval-after-load 'org
     (add-to-list 'org-structure-template-alist '("py" . "src python"))
     (add-to-list 'org-structure-template-alist '("r" . "src racket"))
     (add-to-list 'org-babel-tangle-lang-exts '("racket" . "rkt"))
-    (setq org-bullets-bullet-list '("❱" "⟫" "⊙"))
-    ;; ("⑴" "⑵" "⑶")
-    (setq org-agenda-files "~/org/todo.org")
+    (add-to-list 'org-babel-tangle-lang-exts '("python" . "py"))
     )
   (eval-after-load "tex"
     '(add-to-list 'TeX-command-list '("Make" "make" TeX-run-command nil t)))
@@ -365,3 +373,23 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (conda spinner evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-escape goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)

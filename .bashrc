@@ -137,5 +137,54 @@ export PATH="$PATH:/home/adrian/.local/bin"
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VERBOSITY=-1
 
+function easy_forward() {
+    # Forwards port $1 into port $2 and listens to it
+    ssh -N -f -L localhost:$2:localhost:$1 ctdesk
+}
+
+function kill_frwd_port() {
+    lsof -ti:$1 | xargs kill
+}
+
+function set_up_citius_remote() {
+    nmcli con up id vpn-UDP4-1194 # Turn the vpn on
+    easy_forward 8888 8888 # Forward port 8888 so jupyter notebooks work
+    easy_forward 6006 6006 # Forward port 6006 so tensorboard works
+    clear # Flush previous messages
+    ssh ctdesk # connect via ssh (not really necessary as I mostly use browser and emacs to do most of the work but it's nice to have a terminal just in case)
+}
+
+function tear_down_citius_remote() {
+    kill_frwd_port 8888
+    kill_frwd_port 6006
+    nmcli con down id vpn-UDP4-1194
+    clear
+}
+
+ex ()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1   ;;
+            *.tar.gz)    tar xzf $1   ;;
+            *.bz2)       bunzip2 $1   ;;
+            *.rar)       unrar x $1   ;;
+            *.gz)        gunzip $1    ;;
+            *.tar)       tar xf $1    ;;
+            *.tbz2)      tar xjf $1   ;;
+            *.tgz)       tar xzf $1   ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1;;
+            *.7z)        7z x $1      ;;
+            *.deb)       ar x $1      ;;
+            *.tar.xz)    tar xf $1    ;;
+            *.tar.zst)   unzstd $1    ;;
+            *)           echo "'$1' cannot be extracted via ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
 eval "$(starship init bash)"
 eval "$(register-python-argcomplete pipx)"

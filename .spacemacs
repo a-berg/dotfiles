@@ -30,7 +30,8 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(;; ----------------------------------------------------------------
+   '(csv
+     ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
@@ -41,17 +42,21 @@ values."
      ; parinfer
      ;; languages/distributions
      emacs-lisp
-     python
+     (python :variables
+             python-formatter 'black
+             python-format-on-save t
+             python-sort-imports-on-save t)
      (conda :variables
             conda-anaconda-home "/home/adrian/miniconda3"
-            conda-env-home-directory "/home/adrian/.conda")
-            ;; conda-env-subdirectory "../.conda/envs")
+            conda-env-home-directory "/home/adrian/miniconda3/")
+            ;; conda-env-subdirectory "/home/adrian/.conda/envs")
      racket
      ;; document production
      markdown
      latex
      org
      ;; other
+     bm
      yaml
      helm
      git
@@ -68,7 +73,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(solarized-theme
+   dotspacemacs-additional-packages '(silkworm-theme
+                                      cloud-theme
+                                      solarized-theme
                                       nord-theme
                                       darktooth-theme)
                                       ;;tiny
@@ -143,9 +150,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         solarized-gruvbox-dark
-                         solarized-light)
+   dotspacemacs-themes '(silkworm
+                         solarized-gruvbox-dark)
+                         ;; solarized-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -346,15 +353,23 @@ you should place your code here."
   (setq org-superstar-headline-bullets-list '("❱" "⟫" "⊙"))
   ;; ("⑴" "⑵" "⑶")
   (setq org-agenda-files "~/org/todo.org")
+  (setq org-src-window-setup "plain")
 
+  ;; Extend org mode templates and tangle
   (with-eval-after-load 'org
     (add-to-list 'org-structure-template-alist '("py" . "src python"))
     (add-to-list 'org-structure-template-alist '("r" . "src racket"))
     (add-to-list 'org-babel-tangle-lang-exts '("racket" . "rkt"))
     (add-to-list 'org-babel-tangle-lang-exts '("python" . "py"))
     )
+  ;; Make tex use make
   (eval-after-load "tex"
     '(add-to-list 'TeX-command-list '("Make" "make" TeX-run-command nil t)))
+  ;; custom keybinds
+  (spacemacs/declare-prefix "fd" "dotfiles")
+  (spacemacs/set-leader-keys "fdb" (lambda () (interactive) (find-file "~/.bashrc")))
+  ;; set modes for extensions
+  (add-to-list 'auto-mode-alist '("justfile" . makefile-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -383,13 +398,32 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#3a81c3")
+     ("OKAY" . "#3a81c3")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#42ae2c")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (conda spinner evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-escape goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
-(custom-set-faces
+    (csv-mode spinner evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-escape goto-chg eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+ '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef"))))
+;; (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ ;; '(default ((((class color) (min-colors 89)) (:foreground "#a89984" :background "#282828")))))
 )

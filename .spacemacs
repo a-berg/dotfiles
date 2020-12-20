@@ -55,6 +55,7 @@ values."
      markdown
      latex
      org
+     pdf
      ;; other
      bm
      yaml

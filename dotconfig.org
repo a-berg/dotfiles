@@ -1,0 +1,78 @@
+#+title: .config files
+
+* bash
+  
+** bashrc
+   :PROPERTIES:
+   :header-args: :tangle ~/.bashrc
+   :END:
+
+   This file tends to be gigantic and I don't really put that much code into it anyway.
+   
+** bash_aliases
+   :PROPERTIES:
+   :header-args: :tangle ~/.bash_aliases
+   :END:
+
+   This function creates a new directory and ~cd~ s into it.
+
+#+begin_src bash
+  function mkcd {
+    last=$(eval "echo \$$#")
+    if [ ! -n "$last" ]; then
+      echo "Enter a directory name"
+    elif [ -d $last ]; then
+      echo "\`$last' already exists"
+    else
+      mkdir $@ && cd $last
+    fi
+  }
+#+end_src
+
+   A couple utility functions to set up and then tear down the connection with
+   my remote desk at work. I have to move this to a simple (but better featured)
+   python script.
+
+#+begin_src bash
+  function set_up_citius_remote {
+      nmcli con up id vpn-UDP4-1194
+      ssh -Nf ctdesknb
+  }
+#+end_src
+
+  Alias for managing configurations using a bare git repository.
+
+#+begin_src bash
+  alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+#+end_src
+
+
+* .ssh
+  :PROPERTIES:
+  :header-args: :tangle ~/.ssh/config
+  :END:
+ 
+
+  First, I want an alias for my dest at CiTIUS, which will also serve as a base
+  for other aliases related to it.
+
+  - [ ] TODO: add identity file.
+  - [ ] TODO: merge with the other ssh conf I have. It has aliases for CESGA and
+    others.
+
+#+begin_src conf
+  Host ctdesk*
+      HostName 172.16.243.243
+      user adrian.berges.enfedaque
+#+end_src
+
+  Now, create another alias that connects to said desk and forwards
+  ~localhost:8888~ too, for notebook use. You can call it with ~ssh -Nf ctdesknb~. 
+  I haven't yet discovered how to force ssh to first connect via ~nmcli~.
+
+#+begin_src conf
+  Host ctdesknb
+    LocalForward 8888 localhost:8888
+#+end_src
+
+  

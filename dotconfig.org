@@ -36,7 +36,8 @@
 #+begin_src bash
   function set_up_citius_remote {
       nmcli con up id vpn-UDP4-1194
-      ssh -Nf ctdesknb
+      ssh ctdesknb
+      echo "Close this ssh connection to kill port forwarding."
   }
 #+end_src
 
@@ -46,6 +47,11 @@
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #+end_src
 
+  I need to alias emacs to emacsclient
+
+#+begin_src bash
+  alias emacs='emacsclient'
+#+end_src
 
 * .ssh
   :PROPERTIES:
@@ -64,6 +70,7 @@
   Host ctdesk*
       HostName 172.16.243.243
       user adrian.berges.enfedaque
+      IdentityFile ~/.ssh/citius-desk
 #+end_src
 
   Now, create another alias that connects to said desk and forwards
@@ -76,3 +83,6 @@
 #+end_src
 
   
+;; Local Variables: 
+;; eval: (add-hook 'after-save-hook (lambda ()(if (y-or-n-p "Tangle?")(org-babel-tangle))) nil t) 
+;; End:

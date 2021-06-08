@@ -62,15 +62,12 @@
   First, I want an alias for my dest at CiTIUS, which will also serve as a base
   for other aliases related to it.
 
-  - [ ] TODO: add identity file.
-  - [ ] TODO: merge with the other ssh conf I have. It has aliases for CESGA and
-    others.
-
 #+begin_src conf
   Host ctdesk*
       HostName 172.16.243.243
       user adrian.berges.enfedaque
-      IdentityFile ~/.ssh/citius-desk
+      # IdentityFile ~/.ssh/citius-desk
+      IdentityFile ~/.ssh/rsa_citius
 #+end_src
 
   Now, create another alias that connects to said desk and forwards
@@ -81,6 +78,26 @@
   Host ctdesknb
     LocalForward 8888 localhost:8888
 #+end_src
+
+  Another alias for Finis Terrae II supercomputer.
+
+#+begin_src conf
+  Host cesga
+       Hostname ft2.cesga.es
+       User uscciabe
+       ProxyJump ctdesk
+       ForwardAgent yes
+#+end_src
+
+  This one configures access to github.com via ~IdentityFile~ exclusively.
+
+#+begin_src conf
+  Host github.com
+       IdentitiesOnly yes
+       IdentityFile ~/.ssh/personal_github_ed25519
+#+end_src
+
+
 
   
 ;; Local Variables: 

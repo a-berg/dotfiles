@@ -1,6 +1,6 @@
 #+title: .config files
 
-* bash
+* shell-script
   
 ** bashrc
    :PROPERTIES:
@@ -14,9 +14,11 @@
    :header-args: :tangle ~/.bash_aliases
    :END:
 
-   This function creates a new directory and ~cd~ s into it.
+*** Functions
 
-#+begin_src bash
+    This function creates a new directory and ~cd~ s into it.
+
+#+begin_src shell-script
   function mkcd {
     last=$(eval "echo \$$#")
     if [ ! -n "$last" ]; then
@@ -29,29 +31,91 @@
   }
 #+end_src
 
-   A couple utility functions to set up and then tear down the connection with
-   my remote desk at work. I have to move this to a simple (but better featured)
-   python script.
+     A few utility functions to set up and then tear down the connection with
+     my remote desk at work. I should move this to a simple (but better
+     featured) python script.
 
-#+begin_src bash
+#+begin_src shell-script
   function set_up_citius_remote {
       nmcli con up id vpn-UDP4-1194
       ssh ctdesknb
       echo "Close this ssh connection to kill port forwarding."
   }
+  
+  function frwd_port() {
+      # Forwards port $1 into port $2 and listens to it
+      ssh -N -f -L localhost:$2:localhost:$1 ctdesk
+  }
+  
+  function kill_frwd_port() {
+      lsof -ti:$1 | xargs kill
+  }
 #+end_src
 
-  Alias for managing configurations using a bare git repository.
+    This function I found somewhere simply extracts any file regardless of its
+    extension.
 
-#+begin_src bash
+#+begin_src shell-script
+  function ex ()
+  {
+      if [ -f $1 ] ; then
+          case $1 in
+              ,*.tar.bz2)   tar xjf $1   ;;
+              ,*.tar.gz)    tar xzf $1   ;;
+              ,*.bz2)       bunzip2 $1   ;;
+              ,*.rar)       unrar x $1   ;;
+              ,*.gz)        gunzip $1    ;;
+              ,*.tar)       tar xf $1    ;;
+              ,*.tbz2)      tar xjf $1   ;;
+              ,*.tgz)       tar xzf $1   ;;
+              ,*.zip)       unzip $1     ;;
+              ,*.Z)         uncompress $1;;
+              ,*.7z)        7z x $1      ;;
+              ,*.deb)       ar x $1      ;;
+              ,*.tar.xz)    tar xf $1    ;;
+              ,*.tar.zst)   unzstd $1    ;;
+              ,*)           echo "'$1' cannot be extracted via ex()" ;;
+          esac
+      else
+          echo "'$1' is not a valid file"
+      fi
+  }
+  
+#+end_src
+
+*** General aliases
+    
+    Alias for managing configurations using a bare git repository.
+
+#+begin_src shell-script
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #+end_src
 
-  I need to alias emacs to emacsclient
-
-#+begin_src bash
+    I need to alias emacs to emacsclient (/disabled for now/).
+  
+#+begin_src shell-script :tangle no
   alias emacs='emacsclient'
 #+end_src
+
+    More utility aliases
+
+#+begin_src shell-script
+  alias python="python3"
+  alias pip="pip3"
+  alias tfgpu="conda activate tfgpu"
+  alias jlab="jupyter lab"
+  alias droidcam_audio="pacmd load-module module-alsa-source device=hw:Loopback,1,0"
+  # alias emacs="flatpak run org.gnu.emacs"
+  # Should use /etc/fstab for automounting, but...
+  alias mount_work_folder="sshfs ctdesk:/home/adrian.berges.enfedaque/+dev/finsa/ ~/work/"
+  
+  # exa instead of ls
+  alias ls="exa"
+  alias ll="exa -ahlF"
+  alias la="exa -a"
+  alias tree="exa --tree"
+#+end_src
+
 
 * .ssh
   :PROPERTIES:
@@ -59,8 +123,8 @@
   :END:
  
 
-  First, I want an alias for my dest at CiTIUS, which will also serve as a base
-  for other aliases related to it.
+  First, I want an alias for my desktop at CiTIUS, which will also serve as a
+  base for other aliases related to it.
 
 #+begin_src conf
   Host ctdesk*

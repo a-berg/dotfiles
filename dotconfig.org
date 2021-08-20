@@ -1,6 +1,6 @@
 #+title: .config files
 
-* shell-script
+* bash
   
 ** bashrc
    :PROPERTIES:

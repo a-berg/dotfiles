@@ -175,7 +175,9 @@ lvim.plugins = {
       requires = "nvim-lua/plenary.nvim"
   },
   {"hkupty/iron.nvim"},
-  {'glacambre/firenvim', config = {run = function() vim.fn['firenvim#install'](0) end }}
+  -- {'glacambre/firenvim', config = {run = function() vim.fn['firenvim#install'](0) end }}
+  -- {unicode.vim}
+  {"tpope/vim-surround"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

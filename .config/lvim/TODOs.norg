@@ -10,37 +10,50 @@
 NOTE: I plan to use /CalVer/ versioning scheme
 * 2022.0.α
  ** finish to configure neorg
-  -- [ ] I need something to add todos and basically make writing this faster
+  -- [x] I need something to add todos and basically make writing this faster
+  --- Sort of. `gt` can manipulate TODOs and there are snippets.
   -- [x] dirman
   -- [x] concealer
   -- [x] journal
   -- [x] gtd
-  -- [?] org-export, y'now'whatimsayin? {}
+  -- [?] org-export, y'now'whatimsayin?
+  --- Seems like it's not implemented yet, but I think that maybe
+      with `pandoc` /someone/ could implement an extension?
 
  ** Python
-  -- [x] Get python server to use `pylsp` -or `jedi`-, not `pyright` 
-  -- [x] Get `sniprun` to use virtual environments (e.g. `conda main`)
-         follow-up: just use `conda activate main` before launching `lvim`.
+    - [x] Get python server to use `pylsp` -or `jedi`-, not `pyright` 
+    - [x] Get `sniprun` to use virtual environments (e.g. `conda main`)
+    -- follow-up: just use `conda activate main` before launching `lvim`.
+    -- I uninstalled it. Need to keep searching a good way to run python code like in a notebook.
 
  ** LunarVim config
-  -- [?] add alias:
-           @code bash
-             alias nvim="lvim"
-           @end
-  -- [ ] use neorg for a literate config
-  -- [ ] set it into a git repo, stow it.
-  -- [ ] modularize (the external plugins are starting to get out of hand)
-  -- [ ] Use melange LIGHT
-  --- [ ] Advanced: tweak the theme so no italic
-  --- [ ] Same could be said of onedarker (no italics)
+    - [ ] learn more of the inner workings.
+   -- [?] add alias:
+          @code bash
+            alias nvim="lvim"
+          @end
+   -- [=] use neorg for a literate config
+   --- Will take some time since I need Neorg to implement tangling.
+   -- [x] set it into a git repo, stow it.
+   -- [ ] modularize (the external plugins are starting to get out of hand)
+   -- [ ] Use melange LIGHT
+   --- [ ] Advanced: tweak the theme so no italic
+   --- [ ] Same could be said of onedarker (no italics)
 .
  ** More plugins:
-  -- [ ] unicode.vim
+  -- [_] unicode.vim
+  --- Dunno if I need it as of now.
   --- Could I revamp that into a Lua plugin with extra stuff like "parse as you type"?
-  -- [ ] figure out how to surround things or install Vim surround
+  -- [x] figure out how to surround things or install Vim surround
+  --- Using `vim-surround`. Less than ideal (I loved how it worked in 
+      /emacs/) but... eh
 
  ** Misc
-  - [ ] Lua formatting or something
+  - [ ] make this file into the gtd-file?
+  - [=] Lua formatting or something
+  --- I'd love to use [stylua](https://github.com/ckipp01/stylua-nvim) but 
+      `cargo` fails to compile it.
   - [_] Install GNVim or neovide
+  --- Not really needed... use kitty.
   - [ ] patch Iosevka SS04 for nerdicons or make nerd Iosevka to use SS04.
   -- I /think/ I can solve it using *kitty*.

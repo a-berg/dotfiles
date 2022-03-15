@@ -1,0 +1,46 @@
+@document.meta
+  title: TODOs
+  description: My to-do's for the config.
+  authors: aberges
+  categories:  config
+  created: 2022-03-11
+  version: 0.0.1
+@end
+
+NOTE: I plan to use /CalVer/ versioning scheme
+* 2022.0.α
+ ** finish to configure neorg
+  -- [ ] I need something to add todos and basically make writing this faster
+  -- [x] dirman
+  -- [x] concealer
+  -- [x] journal
+  -- [x] gtd
+  -- [?] org-export, y'now'whatimsayin? {}
+
+ ** Python
+  -- [x] Get python server to use `pylsp` -or `jedi`-, not `pyright` 
+  -- [x] Get `sniprun` to use virtual environments (e.g. `conda main`)
+         follow-up: just use `conda activate main` before launching `lvim`.
+
+ ** LunarVim config
+  -- [?] add alias:
+           @code bash
+             alias nvim="lvim"
+           @end
+  -- [ ] use neorg for a literate config
+  -- [ ] set it into a git repo, stow it.
+  -- [ ] modularize (the external plugins are starting to get out of hand)
+  -- [ ] Use melange LIGHT
+  --- [ ] Advanced: tweak the theme so no italic
+  --- [ ] Same could be said of onedarker (no italics)
+.
+ ** More plugins:
+  -- [ ] unicode.vim
+  --- Could I revamp that into a Lua plugin with extra stuff like "parse as you type"?
+  -- [ ] figure out how to surround things or install Vim surround
+
+ ** Misc
+  - [ ] Lua formatting or something
+  - [_] Install GNVim or neovide
+  - [ ] patch Iosevka SS04 for nerdicons or make nerd Iosevka to use SS04.
+  -- I /think/ I can solve it using *kitty*.

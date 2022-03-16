@@ -36,6 +36,7 @@ NOTE: I plan to use /CalVer/ versioning scheme
    --- Will take some time since I need Neorg to implement tangling.
    -- [x] set it into a git repo, stow it.
    -- [ ] modularize (the external plugins are starting to get out of hand)
+   --- One of the maintainers of LunarVim pointed me to his config as an example.
    -- [ ] Use melange LIGHT
    --- [ ] Advanced: tweak the theme so no italic
    --- [ ] Same could be said of onedarker (no italics)
@@ -55,5 +56,5 @@ NOTE: I plan to use /CalVer/ versioning scheme
       `cargo` fails to compile it.
   - [_] Install GNVim or neovide
   --- Not really needed... use kitty.
-  - [ ] patch Iosevka SS04 for nerdicons or make nerd Iosevka to use SS04.
+  - [x] patch Iosevka SS04 for nerdicons or make nerd Iosevka to use SS04.
   -- I /think/ I can solve it using *kitty*.

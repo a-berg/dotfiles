@@ -1509,9 +1509,3 @@ editor lvim
 #: }}}
 
 #: }}}
-
-
-# BEGIN_KITTY_THEME
-# Melange Dark
-include current-theme.conf
-# END_KITTY_THEME

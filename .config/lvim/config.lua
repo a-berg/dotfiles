@@ -178,6 +178,8 @@ lvim.plugins = {
   -- {'glacambre/firenvim', config = {run = function() vim.fn['firenvim#install'](0) end }}
   -- {unicode.vim}
   {"tpope/vim-surround"},
+  {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'},
+  {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

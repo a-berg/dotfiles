@@ -1,12 +1,7 @@
-# Meine dotfiles!
-
-> Sorry for the bad German, I just started learning.
+# dotfiles!
 
 The idea is to use `Nix` to manage my packages, and keep it low-tech (meaning:
-no `home-manager`, no flakes if possible); mainly because adding too many
-layers of abstraction to get _the latest cool thing_ usually means hours of
-absurd tweaking for marginal gains. It's the reason behind using Nix instead of
-Guix, honestly.
+no `home-manager` if possible).
 
 ## Usage
 
@@ -15,6 +10,8 @@ The principal objective of the whole repository is to be able to use:
 ```bash
 make
 ```
+
+> (or something similar)
 
 and get the environment up and running in any new machine.
 
@@ -27,11 +24,10 @@ trick.
 
 ## Packages
 
-A non-exhaustive list (for the complete list go to
-[`./.config/nixpkgs/config.nix`](./.config/nixpkgs/config.nix)):
+A non-exhaustive list:
 
 - stow for stowing these dotfiles.
-- neovim/LunarVim as `$EDITOR`.
+- neovim as `$EDITOR`.
 - kitty as terminal emulator.
 - fish as shell.
 - nix as the package manager (regardless of the distribution used)

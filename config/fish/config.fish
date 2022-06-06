@@ -13,3 +13,6 @@ eval /home/aberges/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 set -gx PATH $PATH $HOME/.krew/bin
 
 starship init fish | source
+# register-python-argcomplete --shell fish  pipx | source
+zoxide init fish | source
+# source $HOME/.nix-profile/etc/profile.d/nix.sh

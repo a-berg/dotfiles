@@ -11,7 +11,9 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "melange" -- "onedarker"
+vim.o.background = "light"
+-- lvim.colorscheme = "PaperColor"
+lvim.colorscheme = "melange"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -103,10 +105,10 @@ vim.list_extend(lvim.lsp.override, { "pyright" })
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "black", filetypes = { "python" } },
+  { command = "isort", filetypes = { "python" } },
 --   {
 --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
 --     command = "prettier",
@@ -116,12 +118,12 @@ vim.list_extend(lvim.lsp.override, { "pyright" })
 --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
 --     filetypes = { "typescript", "typescriptreact" },
 --   },
--- }
+}
 
 -- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "flake8", filetypes = { "python" }, extra_args = { "--line-width", "88"} },
 --   {
 --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
 --     command = "shellcheck",
@@ -134,11 +136,14 @@ vim.list_extend(lvim.lsp.override, { "pyright" })
 --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
 --     filetypes = { "javascript", "python" },
 --   },
--- }
+}
 
 -- Additional Plugins
 lvim.plugins = {
+    { "rktjmp/lush.nvim"},
     {"savq/melange"},
+    {"a-berg/goa-theme"},
+    {"NLKNguyen/papercolor-theme"},
     {
       "folke/trouble.nvim",
       cmd = "TroubleToggle",
@@ -174,12 +179,19 @@ lvim.plugins = {
       end,
       requires = "nvim-lua/plenary.nvim"
   },
-  {"hkupty/iron.nvim"},
+  -- {"hkupty/iron.nvim"},
   -- {'glacambre/firenvim', config = {run = function() vim.fn['firenvim#install'](0) end }}
   -- {unicode.vim}
   {"tpope/vim-surround"},
+  -- dadbod (databases)
+  {"tpope/vim-dadbod"},
+  {"kristijanhusak/vim-dadbod-ui"},
+  -- git stuff
   {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'},
-  {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
+  {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'},
+  {"ray-x/lsp_signature.nvim", config=function ()
+    require "lsp_signature".setup()
+  end},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

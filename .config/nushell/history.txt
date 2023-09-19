@@ -1,0 +1,550 @@
+which nu
+nvim
+config nu
+echo $EDITOR
+cd Downloads/
+ll
+ls
+open-df 'filete_empanado_all.parquet'
+open-df -h
+open-df -l filete_empanado_all.parquet
+open-df -l ./filete_empanado_all.parquet
+open-df -l ./filete_empanado__all.parquet
+open-df -l filete_empanado__all.parquet
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | save Downloads/prod_data_04fmnh252hac_20221219.parquet
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | to parquet Downloads/prod_data_04fmnh252hac_20221219.parquet
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable
+open-df -l Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable
+open-df -l Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | agg | sum
+open-df -l Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | agg (col all | sum)
+open-df -l Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | agg (col * | sum)
+open-df -l Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | agg (col * | mean) | collect
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | pivot
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose header rows
+transpose -h
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | pivot
+pivot -h
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose -h
+{c1: 1, c2: 2} | transpose | transpose -i -r -d
+{c1: 1, c2: 2} | transpose
+{c1: 1, c2: 2}
+{c1: 1, c2: 2} | transpose -i -r -d
+{c1: 1, c2: 2} | transpose | transpose -i -r -d
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | pivot-column
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv
+ls | where
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose value timestamp_10min
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose value
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | transpose value
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | group-by variable | transpose value
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename -h
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | transpose timestamp value
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | transpose timestamp
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | transpose 
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | transpose 1
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | rename value VALUE
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter -h
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter ((col variable) ~= "a")
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | flatten
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp 
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | where
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | where (col variable = "a")
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | where (col variable)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter (col variable)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter ((col variable) | contains "a")
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter ((col variable) | contains A)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) | contains A)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) == A)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) ~= A)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) =~ A)
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) =~ "A")
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) | contains "A")
+open-df Downloads/prod_data_04fmnh252hac_20221219.csv | rename timestamp_10min timestamp | filter-with ((col variable) | contains )
+contains -h
+version | transpose key value | to md --pretty
+date -h
+date
+date now
+date now -h
+date format -h
+date now | date format "%S"
+date now | date format "%U"
+date now | date format "%Y-%m S%U"
+clj -h
+date now | date format "%Y-%m S%U" | clip
+version | get features
+date now | date format "%Y-%m S%U" | xclip
+xclip -h
+date now | date format "%Y-%m S%U" | xclip -selection "primary"
+date now | date format "%Y-%m S%U"
+date now | date format "%d/%m/%Y"
+date now | date format "%Y-%m S%U" | xclip -selection c
+query db 
+help query db 
+help open
+du
+help du
+du | table -r
+du | table -e
+help j
+help \
+help z
+z 
+zoxide init nu
+zoxide init nushell
+$nu.env-path
+$nu.config-path
+hx --vsplit $nu.env-path $nu.config-path
+z 
+hx --vsplit $nu.env-path $nu.config-path
+zoxide -h
+$nu.env-path
+$nu.config-path
+zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
+exa -la ~/.config/nushell
+hx --vsplit $nu.env-path $nu.config-path
+z 
+z PERFORMANCE
+hx --vsplit $nu.env-path $nu.config-path
+hx $nu.env-path
+ls
+ls | echo
+echo "hello"
+ls -a | sort-by type name
+ls -a | sort-by type name | select name
+ls | table -n 1
+ls | table -n 8
+ls -a | sort-by type name | select name | list
+ls -a | sort-by type name | select name | listres
+ls -a | sort-by type name | select name | to md 
+ls -a | sort-by type name | select name | to toml
+ls -a | sort-by type name | select name | to csv 
+ls -a | sort-by type name | select name
+dfr
+dfr ls 
+ls -a | sort-by type name
+exa -la
+docker build
+docker build Dockerfile
+docker build - < Dockerfile
+bat README.md
+make docker-build
+bat Dockerfile
+hx Dockerfile
+make docker-build
+pip wheel --use-pep517 "llvmlite (==0.34.0)"
+apt search llv
+apt search llvm
+apt list --installed
+apt list --installed | grep "llvm"
+make docker-build
+hx Dockerfile
+make docker-build
+hx Dockerfile
+bat Makefile
+make docker-clean
+make docker-run-dev
+make docker-build
+hx Dockerfile
+apt search llvm12
+llvm-config --version
+open exploracion.ipynb
+open exploracion.ipynb | from json
+let notebook = open exploracion.ipynb | from json
+notebook | get nbformat
+$notebook | get nbformat
+$notebook | get metadata
+$notebook | get 
+get --help
+sys
+$notebook | columns
+$notebook | get cells | columns
+$notebook | get cells | length
+$notebook | get cells | get 0
+$notebook | get cells | each { |x| $x | get cell_type }
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" }
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" } | columns
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" } | get source | first
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" } | get source
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" } | get source | flatten 
+write --help
+write -h
+write
+save --help
+$notebook | get cells | filter { |x| ($x | get cell_type) == "code" } | get source | flatten | save ./exploracion_extracted.py
+bat exploracion_extracted.py
+black exploracion_extracted.py
+open .env
+open pyproject.toml
+open pyproject.toml | columns
+open pyproject.toml | select tool | columns
+open pyproject.toml | select tool
+open pyproject.toml | select tool.tool
+open pyproject.toml | select tool.0
+open pyproject.toml | select tool | select tool
+open pyproject.toml | select tool.black
+open pyproject.toml | select tool.black.exclude
+open pyproject.toml | select tool.pytest
+open pyproject.toml | select tool | each {|x| echo $x}
+open pyproject.toml | select tool | each {|x|  $x | columns}
+open pyproject.toml | columns
+open pyproject.toml | select build-system
+ls
+reset
+open exploracion.ipynb | from json | columns
+let webpage = http get "https://www.nushell.sh/commands/docs/from_nuon.html" 
+webpage | columns
+webpage
+$webpage | columns
+http options https://www.nushell.sh/commands/docs/from_nuon.html
+$webpage | from xml
+'<?xml version="1.0" encoding="UTF-8"?><\n><note><\n>  <remember>Event</remember><\n></note>' | from xml
+[1 2 3] | to nuon | to json 
+[1 2 3] | to nuon
+[1 2 3] | to nuon | to yaml
+'<?xml version="1.0" encoding="UTF-8"?><\n><note><\n>  <remember>Event</remember><\n></note>' | from xml | to nuon
+reset
+ls
+git checkout -b feat/connectorx-dataclass
+gh -h
+gh issue -h
+gh issue list
+gh issue create -h
+gh auth refresh -s project
+hx
+gh issue create --title "Mejorar DBConfig" -F docs/issue.md -a "@me"
+git branch
+cp -h
+cp ../SI-PR-01383-PERFORMANCE_EVOLUTION/performance_evolution/common/configuration/config.py ./mymodule/common/configuration/config_.py
+hx --vsplit ./mymodule/common/configuration/config.py
+rm ./mymodule/common/configuration/config.py
+mv ./mymodule/common/configuration/config_.py ./mymodule/common/configuration/config.py
+git status
+git add mymodule/common/configuration/config.py
+git status
+git commit
+git status
+git push 
+git push --set-upstream origin feat/dbconfig
+git push --set-upstream origin feat/connectorx-dataclass
+gh issue -h
+gh issue create --title "Renombrar carpeta \"infraestructure\"" --body "En inglés es 'infrastructure' y no 'infraestructure', y me da TOC verlo así"
+find -h
+ls -h
+ls -alf
+ls -al
+tree -h
+mv --help
+ls -a **/*
+ls -a **/* | find "infraestructure"
+ls -a **/* | find "infraestructure" | flatten
+ls -a **/* | find "infraestructure" | get name
+ls -a **/* | find "infraestructure" | get name | list
+ls -a **/* | find "infraestructure" | get name | flatten
+ls -a **/* | find "infraestructure" | get name
+rename -h
+ls -a **/* | find "infraestructure" | get name | str replace "infraestructure" "infrastructure"
+ls -a **/*| find "infraestructure" | get name 
+ls -a **/* | find "infraestructure" | get name 
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>{|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>do {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x ($x | str replace "infraestructure" "infrastructure")}
+mv **/infraestructure/**/* **/infrastructure/**/*
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| mv -vi $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x ($x | str replace "infraestructure" "infrastructure")}
+mv mymodule/analytics/infraestructure/__init__.py  mymodule/analytics/infrastructure/__init__.py
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+let closuremv = {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo ($x | str replace "infraestructure" "infrastructure")}
+ls --type dir -a **/*
+ls -aD **/*
+ls -h
+ls -a **/* | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | where type == dir<\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | where type == dir
+ls -a **/* | where type == dir | find "infraestructure"
+ls -a **/* | where type == dir<\n>find "infraestructure" |<\n>get name
+ls -a **/* |<\n>where type == dir |<\n>find "infraestructure" |<\n>get name
+ls -a **/* |<\n>where type == dir |<\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x}
+ls -a **/* |<\n>where type == dir |<\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x | str replace "infraestructure" "infrastructure"}
+ls -a **/* |<\n>where type == dir |<\n>find "infraestructure" |<\n>get name |<\n>each {|x| mkdir ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* |<\n>where type == dir |<\n>find "infrastructure" |<\n>get name
+ls -a **/* | where type == file | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| echo $x ($x | str replace "infraestructure" "infrastructure")}
+ls -a **/* | where type == file | <\n>find "infraestructure" |<\n>get name |<\n>each {|x| mv $x ($x | str replace "infraestructure" "infrastructure")}
+ls
+http get 'https://github.com/ankitpokhrel/jira-cli/releases/'
+http get 'https://github.com/ankitpokhrel/jira-cli/releases/downloads'
+http get 'https://github.com/ankitpokhrel/jira-cli/releases/downloads/'
+http get 'https://github.com/ankitpokhrel/jira-cli/releases/download/v1.4.0/'
+http get https://api.github.com/repos/innobead/huber/releases/latest
+http get https://api.github.com/repos/be5invis/iosevka/releases/latest
+http get https://api.github.com/repos/be5invis/iosevka/releases/latest | get name
+http get https://api.github.com/repos/be5invis/iosevka/releases/latest | columns
+let iosevka_release = http get https://api.github.com/repos/be5invis/iosevka/releases/latest
+$iosevka_release | get url
+$iosevka_release | get tag_name
+hx $nu.env-path
+hx $nu.config-path
+hx ~/.cache/starship/init.nu
+hx $nu.env-path
+hx $nu.config-path
+hx $nu.env-path
+ls
+mkdir -h
+mkdir -v learning_styles/interventions/{controllers,domain,infrastructure,usecases}
+rm -r learning_styles/interventions/{controllers,domain,infrastructure,usecases}
+["controllers", "domain", "infrastructure", "usecases"] | each {|x| mkdir -v learning_styles/interventions/$x}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo "learning_styles/interventions/$x"}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo "learning_styles/interventions/{$x}"}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo learning_styles/interventions/}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| $x | echo learning_styles/interventions/}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo $x|(str join learning_styles/interventions)}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo ($x|(str join learning_styles/interventions))}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo ($x|(path join learning_styles/interventions))}
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| echo (path join learning_styles/interventions $x) }
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| learning_styles/interventions | path join $x | echo }
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| "learning_styles/interventions" | path join $x | echo }
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| "learning_styles/interventions" | path join $x }
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| "learning_styles/interventions" | path join $x | mkdir -v }
+["controllers", "domain", "infrastructure", "usecases"] | each { |x| mkdir -v ("learning_styles/interventions" | path join $x ) }
+["entities", "services"] | each { |x| mkdir -v ("learning_styles/interventions/domain" | path join $x ) }
+rm -r learning_styles/interventions/$x
+ll learning_styles/interventions/
+ls learning_styles/interventions/
+ls learning_styles/interventions/domain/
+ls -a **/* | where type == dir
+ls -a learning_styles/interventions/** | where type == dir
+ls -a learning_styles/interventions/** | where type == dir | touch __init__.py
+ls -a learning_styles/interventions/** | where type == dir | each {|x| echo ("__init__.py" | path join $x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ("__init__.py" | path join $x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| ("__init__.py" | path join $x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| ($x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ($x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ("__init__.py" | $x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ("__init__.py" + $x)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ("__init__.py" + $x.name)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ("__init__.py" | path join $x.name)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| echo ($x.name | path join __init__.py)}
+ls -a learning_styles/interventions/** | where type == dir | select name | each {|x| touch ($x.name | path join __init__.py)}
+ls -a learning_styles/interventions/**
+ls -a learning_styles/interventions/**/*
+git status
+git checkout -b interventions
+git add learning_styles/interventions/
+git status
+git commit -m "wip: added module for interventions"
+ls learning_styles/analytics/**/*
+ls learning_styles/analytics/**/* | where type == file
+filter -h
+path -h
+str -h
+ls learning_styles/analytics/**/* | where type == file | filter {|x| $x | str contains "__pycache__"}
+ls learning_styles/analytics/**/* | where type == file | filter {|x| $x.name | str contains "__pycache__"}
+ls learning_styles/analytics/**/* | where type == file | filter {|x| $x.name | str contains --not "__pycache__" }
+ls learning_styles/analytics/**/* | where type == file | filter {|x| $x.name | str contains --not "__pycache__" } | filter {|x| $x.name | str contains --not "__init__" }
+touch learning_styles/interventions/controllers/interventions.py
+touch learning_styles/interventions/domain/services/interventions.py
+touch learning_styles/interventions/domain/infrastructure/interventions_repository.py
+touch learning_styles/interventions/infrastructure/interventions_repository.py
+touch learning_styles/interventions/infrastructure/abstract_interventions_repository.py
+touch learning_styles/interventions/usecases/interventions.py
+ls learning_styles/interventions/**/* | where type == file | filter {|x| $x.name | str contains --not "__pycache__" } | filter {|x| $x.name | str contains --not "__init__" }
+git status
+git add learning_styles/interventions/
+git status
+git commit -m "wip: added usecase/services/repository/controller files for the dummy module for interventions"
+git checkout main
+git checkout master
+mv learning_styles/analytics/infrastructure/abstract_repository.py learning_styles/common/infrastructure/
+rg "learning_styles.analytics.infrastructure" --files-with-matches
+rg "learning_styles.analytics.infrastructure" --files-with-matches |<\n>each {|x| $x}
+sed -h
+rg "learning_styles.analytics.infrastructure" --files-with-matches | open | str replace "analytics" "common"
+open "learning_styles/tests/integration/results_table.py" | str replace "analytics" "common"
+open "learning_styles/tests/integration/results_table.py" | str replace "analytics.infrastructure" "common.infrastructure"
+rg "learning_styles.analytics.infrastructure"
+rg "learning_styles.analytics.infrastructure.abstract_repository"
+rg "learning_styles.analytics.infrastructure.abstract_repository" --files-with-matches
+open "learning_styles/analytics/usecases/styles.py" | str replace "analytics.infrastructure" "common.infrastructure"
+open "learning_styles/analytics/usecases/styles.py" | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository"
+open "learning_styles/analytics/usecases/styles.py" | str replace "analytics.infrastructure" "common.infrastructure" --all
+open "learning_styles/analytics/usecases/styles.py" | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all
+let closure = {|x| open $x | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all} |<\n>rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each $closure
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each {|x| open $x | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| open $x | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| $x | open | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| $x}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| (open $x | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all)}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| (open "{$x}" | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all)}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each { |x| (open $"{$x}" | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all)}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each {(open $it | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all)}
+rg "analytics.infrastructure.abstract_repository" --files-with-matches |<\n>each (open $it | str replace "analytics.infrastructure.abstract_repository" "common.infrastructure.abstract_repository" --all)
+poetry run python -m learning_styles.cli --help
+zrf poetry run pytest
+hx
+open mlruns/mlruns.db | schema
+open mlruns/mlruns.db | schema | columns
+open mlruns/mlruns.db | schema | get tables | columns
+open mlruns/mlruns.db | query db "select * from experiments;"
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | format datetime
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | date format "%Y-%m-%d"
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | format date "%Y-%m-%d"
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | format date
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | into datetime
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | into datetime '%Y%m%d_%H%M%S%z'
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | into datetime -f '%Y%m%d_%H%M%S%z'
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | into datetime
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time * 1_000
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | math product
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | math product 1000
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | do {|x| $x * 1000}
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | do { |x| $x * 1000}
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | do { |x| $x.creation_time * 1000}
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1000}
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1000} | into datetime
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000_000} | into datetime
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000_000} | into datetime | format date "%X"
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000_000} | into datetime | format date "%x"
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000_000} | into datetime | format date "%X %x"
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | into datetime | format date "%X %x"
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000_000} | into datetime | format date "%X %x"
+open mlruns/mlruns.db | query db "select * from experiments;" | get creation_time | each { |x| $x * 1_000} | into datetime | format date "%X %x"
+open mlruns/mlruns.db | query db "select * from experiments;" | get last_update_time | each { |x| $x * 1_000_000} | into datetime | format date "%X %x"
+open mlruns/mlruns.db | query db "select * from experiments;" 
+open mlruns/mlruns.db | schema | get tables | columns
+open mlruns/mlruns.db | query db "select * from tags;" 
+open mlruns/mlruns.db | query db "select * from runs;" 
+open mlruns/mlruns.db | query db "select * from params;" 
+open mlruns/mlruns.db | query db "select * from metrics;" 
+cat .env
+load .env
+open .env
+load-env .env
+open .env | load-env
+open .env | into record
+load-env (cat .env)
+nu .env
+LOG_LEVEL=INFO $env.LOG_LEVEL
+$env.LOG_LEVEL
+cat .env
+psql --help
+cat .env
+psql -h 10.5.4.45 -p 5555 -U postgres -W password
+query = "<\n>SELECT<\n>    *<\n>FROM students_evolution_master_table T<\n>JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill<\n>WHERE score BETWEEN 0.0 AND 100.0<\n>  AND T.skill NOT LIKE '%Quiz'<\n>  AND T.skill NOT LIKE 'Creativity'<\n>  AND T.hour BETWEEN 8 AND 20<\n>"
+query= "SELECT *FROM students_evolution_master_table T JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill WHERE score BETWEEN 0.0 AND 100.0 AND T.skill NOT LIKE '%Quiz'  AND T.skill NOT LIKE 'Creativity' AND T.hour BETWEEN 8 AND 20"
+echo $query
+let query = "SELECT *FROM students_evolution_master_table T JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill WHERE score BETWEEN 0.0 AND 100.0 AND T.skill NOT LIKE '%Quiz'  AND T.skill NOT LIKE 'Creativity' AND T.hour BETWEEN 8 AND 20"
+echo $query
+let query = "SELECT *FROM students_evolution_master_table T JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill WHERE score BETWEEN 0.0 AND 100.0 AND T.skill NOT LIKE '%Quiz'  AND T.skill NOT LIKE 'Creativity' AND T.hour BETWEEN 8 AND 20;"
+psql -h 10.5.4.45 -p 5555 -U postgres -W password -c $query
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -W password -c $query
+let query = "SELECT *FROM students_evolution_master_table T JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill WHERE score BETWEEN 0.0 AND 100.0 AND T.skill NOT LIKE '%Quiz'  AND T.skill NOT LIKE 'Creativity' AND T.hour BETWEEN 8 AND 20 LIMIT 10;"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -W password -c $query
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c $query
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c $query | echo
+let query = "<\n>SELECT<\n>    *<\n>FROM students_evolution_master_table T<\n>JOIN available_assignments A ON A.course_level = T.course_level AND A.skill = T.skill<\n>WHERE score BETWEEN 0.0 AND 100.0<\n>  AND T.skill NOT LIKE '%Quiz'<\n>  AND T.skill NOT LIKE 'Creativity'<\n>  AND T.hour BETWEEN 8 AND 20<\n>LIMIT 10;<\n>"<\n>
+$query
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c $query
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c $query -e
+sudo chmod 0600 ~/.pgpass
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c $query -e -w
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -w -c $query –P tuples_only=on,footer=off,border=0
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -w –P tuples_only=on,footer=off,border=0 -c $query
+psql picto_dw -w -c $query
+psql picto_dw -P footer=off -h 10.5.4.45 -p 5555 -U postgres -w -c $query
+psql picto_dw -P footer=off,border=0 -h 10.5.4.45 -p 5555 -U postgres -w -c $query
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query
+psql picto_dw -A -t -h 10.5.4.45 -p 5555 -U postgres -w -c $query
+psql picto_dw -A -t -h 10.5.4.45 -p 5555 -U postgres -w -c $query | echo
+psql picto_dw -A -t -h 10.5.4.45 -p 5555 -U postgres -w -c $query | dfr into-df
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | dfr into-df
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | format table
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | to-table
+ls | format '{name}: {size}'
+format
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | lines
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | open csv
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | open 
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query | from csv --separator "|"
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv | dfr into-df
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv | get skill
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv | get columns
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv | get
+psql picto_dw -A -h 10.5.4.45 -p 5555 -U postgres -w -c $query --csv | from csv | columns
+(psql picto_dw<\n>  -h 10.5.4.45<\n>  -p 5555<\n>  -U postgres<\n>  -f "performance_evolution/analytics/infrastructure/get_students_data.sql"<\n>  --csv<\n>  -o "tmp/students_data.csv")
+(psql picto_dw<\n>  -h 10.5.4.45<\n>  -p 5555<\n>  -U postgres<\n>  -f "performance_evolution/analytics/infrastructure/get_students_data.sql"<\n>  --csv<\n>  -o "/tmp/students_data.csv")
+bat performance_evolution/analytics/infraestructure/get_students_data.sql
+open performance_evolution/analytics/infraestructure/get_students_data.sql
+(psql picto_dw<\n>  -h 10.5.4.45<\n>  -p 5555<\n>  -U postgres<\n>  -f "./performance_evolution/analytics/infrastructure/get_students_data.sql"<\n>  --csv<\n>  -o "/tmp/students_data.csv")
+(psql picto_dw<\n>  -h 10.5.4.45<\n>  -p 5555<\n>  -U postgres<\n>  -c (open "./performance_evolution/analytics/infrastructure/get_students_data.sql")<\n>  --csv<\n>  -o "/tmp/students_data.csv")
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "./performance_evolution/analytics/infrastructure/get_students_data.sql" --csv -o "/tmp/students_data.csv"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c ./performance_evolution/analytics/infrastructure/get_students_data.sql --csv -o "/tmp/students_data.csv"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -f ./performance_evolution/analytics/infrastructure/get_students_data.sql --csv -o "/tmp/students_data.csv"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -f performance_evolution/analytics/infraestructure/get_students_data.sql --csv -o "/tmp/students_data.csv"
+open /tmp/students_data.csv
+open /tmp/students_data.csv | first 10
+python -i -c "import polars as pl; groupby_cols = ["skill", "student_id", "course_level", "is_main_language", "program_id"]; df = pl.read_csv('/tmp/students_data.csv')"
+python -m performance_evolution.cli frequency
+python -m performance_evolution.cli --help
+python -m performance_evolution.cli classify-students
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -l
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\dt"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\dt"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type \\\\ \\d students_first_last_performance"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_session_frequency"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type"
+python -m performance_evolution.cli all
+date -d "+3 weeks"
+date
+date humanize 
+date now
+3week
+3w
+30day
+date now | 3wk
+date now | { |x| x + 3wk}
+date now | { |x| x + 3wk} | do
+date now | do { |x| x + 3wk} 
+date now | do { |x| $x + 3wk} 
+3wk + 1day
+3wk + 1day | format date
+1mo
+(date now | into datetime) + 3wk
+(date now) + 3wk
+(date now) 
+rm performance_evolution/tests/system/test_retive_clients_use_case.py
+poetry run pytest
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type"
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --sql
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv | into table
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv | into 
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv | format table
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv | table
+psql picto_dw -h 10.5.4.45 -p 5555 -U postgres -c "\\d students_type" --csv | format csv
+j
+cd nushell/
+cd ../..
+exa -la
+ls -la | lines
+ls -la
+ls -la | format "{name}"
+nu --version
+format
+git status

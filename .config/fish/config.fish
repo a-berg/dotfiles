@@ -8,8 +8,27 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /home/aberges/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /home/aberges/mambaforge/bin/conda
+    eval /home/aberges/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
+
+if test -f "/home/aberges/mambaforge/etc/fish/conf.d/mamba.fish"
+    source "/home/aberges/mambaforge/etc/fish/conf.d/mamba.fish"
+end
 # <<< conda initialize <<<
+
 set -gx PATH $PATH $HOME/.krew/bin
 
 starship init fish | source
+
+
+# custom functions
+function mkcd
+  if test -z $argv
+    echo "Usage: mkcd <directory>"
+    return 1
+  end
+
+  mkdir -p $argv[1]
+  cd $argv[1]
+end

@@ -1,10 +1,13 @@
+-- this generates a problem in kedro projects: it detects the root_dir as /src because it has setup.py file
+-- meanwhile "normal flake8" detects the root_dir as the project level (parent of /src) by convention.
+-- wait, it doesn't make sense, pyproject.toml is at the project level...
 local opts = {
   root_dir = function(fname)
     local util = require "lspconfig.util"
     local root_files = {
+      "setup.cfg",
       "pyproject.toml",
       "setup.py",
-      "setup.cfg",
       "requirements.txt",
       "Pipfile",
       "manage.py",
@@ -22,3 +25,6 @@ if server_available then
 end
 
 require("lvim.lsp.manager").setup("pylsp", opts)
+-- dap
+-- local dap_install = require "dap-install"
+-- dap_install.config("python", {})

@@ -12,6 +12,7 @@
   pkgs.iosevka # "only" v14.0.1
   pkgs.open-sans
   # Useful programs
+  pkgs.nnn
   pkgs.direnv
   pkgs.exa
   pkgs.stow
@@ -22,3 +23,7 @@
   # Nix Flakes
   pkgs.nixFlakes
 ]
+
+fonts.fonts = with pkgs; [
+  (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+];

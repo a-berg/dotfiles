@@ -8,7 +8,13 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /home/aberges/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /home/adrian/mambaforge/bin/conda
+    eval /home/adrian/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
+
+if test -f "/home/adrian/mambaforge/etc/fish/conf.d/mamba.fish"
+    source "/home/adrian/mambaforge/etc/fish/conf.d/mamba.fish"
+end
 # <<< conda initialize <<<
 set -gx PATH $PATH $HOME/.krew/bin
 

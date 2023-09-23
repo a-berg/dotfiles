@@ -64,7 +64,7 @@ $env.NU_PLUGIN_DIRS = [
 ### -------------
 ### ZOXIDE CONFIG
 ### -------------
-zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
+# zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
 
 ### ----------------------
 ### STARSHIP CONFIGURATION

@@ -548,3 +548,108 @@ ls -la | format "{name}"
 nu --version
 format
 git status
+$nu.config-path
+z wip
+cd wip
+cd Documents/writings/website/wip/
+ll
+ls
+ls | format '{name}: {size}'
+touch consciousness.md
+hx consciousness.md
+cd ~/code/personal/haskell/my-site/
+ll
+ls
+hx css/site.css
+stack exec site watch
+hx css/site.css
+git add .
+git status
+git commit -m "small change to css"
+git push
+hx posts/2023-09-17-learning-haskell.md
+hx css/site.css
+pwd
+exa -la posts/
+git status
+git commit .
+git add .
+git commit -m "changes to css, added a post, added tags"
+git push
+cd ~/code/github.com/julia_sets/
+ll
+ls
+bat README.md
+all
+bat README.md
+hx README.md
+exa -T
+tree
+cd ~/code/github.com/julia_sets/
+ll
+exa -T
+exa -h
+exa --help
+exa -T -I **/target/**
+git status
+hx .gitignore
+git add .
+git status
+exa -T --git-ignore
+touch config.yaml
+git branch
+git status
+git add .
+git commit -m "feat: first commit w/ Haskell and Rust starting code."
+git push
+git checkout -b haskell/feature/basic-implementation
+hx src/haskell/julia.hs
+cd src/haskell/
+stack build
+hx src/haskell/Complex.hs
+bat stack.yaml
+cat stack.yaml
+hx stack.yaml
+stack -h
+stack --help
+exa -T
+stack init
+stack init --force
+hx stack.yaml
+rm stack.yaml
+cd ..
+ll
+ls
+mv haskell/ haskell_old/
+ll
+ls
+let ll = ls -la
+ll
+alias ll = ls -la
+ll
+stack new haskell new-template
+cd haskell
+ll
+ls
+ls src
+hx stack.yaml
+hx package.yaml
+exa app
+hx app/Main.hs
+hx src/Lib.hs
+git status
+git add .
+git rm --cached ../nushell/history.txt
+git status
+git add .
+git status
+git add ..
+cd ../..
+git add .
+git status
+hx .gitignore
+git status
+git add .
+git status
+hx .gitignore
+git status

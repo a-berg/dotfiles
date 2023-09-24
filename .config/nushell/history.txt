@@ -653,3 +653,195 @@ git add .
 git status
 hx .gitignore
 git status
+git add .
+git status
+git commit -m "added zellij config"
+git push
+cd -
+z wip
+cd ..
+ll
+ls
+hx publish.nu
+bat publish.nu
+cat publish.nu
+let file = wip/consciousness.md
+let file = "wip/consciousness.md"
+$file | path parse
+$file | path parse | path dirname
+$file |  path dirname
+$file | path expand
+$file | path expand | path parse
+$file | path expand | path parse | update parent { |e| ($e.parent) }
+$file | path expand | path parse | update parent { |e| ($e.parent | str replace "wip" "completed") }
+$file | path expand | path parse | update parent { |e| ($e.parent | str replace "wip" "completed") } | path join
+z wip
+hx publish.nu
+cd ..
+hx publish.nu
+./publish.nu wip/consciousness.md
+let file = "wip/consciousness.md"
+($file<\n>$file)
+($file\$file)
+($file\ $file)
+($file \)
+^ls
+^ll
+^ls -la
+exa -la | table
+exa -la 
+exa -la | lines | table
+hx publish.nu
+./publish.nu wip/consciousness.md
+./publish.nu wip/consciousness.md --target-dir .
+./publish.nu wip/consciousness.md --target .
+ls
+exa -la wip
+exa -la completed
+./publish.nu wip/learning-haskell.md --target .
+exa -la completed
+exa -la wip
+rm wip/is-haskell-for-me.org
+ll
+ls
+rm --help
+rm `2023-09-23-consciousness.md` `2023-09-23-learning-haskell.md`
+ll
+ls
+ls ..
+hx publish.nu
+mv completed/consciousness.md wip/
+./publish.nu wip/consciousness.md --target . --date "2023-09-22"
+./publish.nu wip/consciousness.md --target . --pub-date "2023-09-22"
+ls
+ls completed/
+mv completed/learning-haskell.md wip/
+./publish.nu wip/learning-haskell.md --target . --pub-date "2023-09-17"
+rm `2023-09-22-consciousness.md` `2023-09-17-learning-haskell.md`
+git status
+git add publish.nu
+git add .
+git status
+git commit -m "added publish.nu command, plus various articles"
+ls
+exa -la wip
+exa -la completed/
+z julia_sets
+cd src/haskell/
+ll
+ls
+cd -
+cd src/haskell/
+ls
+alias ll = ls -l
+ll
+stack exec haskell-exe
+stack build
+haskell
+stack exec haskell-exe
+hx
+hx .
+cd ..
+rm haskell/
+rm -rf haskell/
+ll
+rename -h
+mv haskell_old/ haskell/
+ll
+cd haskell/
+stack new julia_sets new-template --bare
+stack new julia-sets new-template --bare
+ls
+mv README.md README_old.md
+stack new julia-sets new-template --bare
+ll
+mv README_old.md README.md
+cat README.md
+mv README_old.md README.md -f
+hx README.md
+mv julia.hs src/
+ls
+ls | where type=file
+where -h
+ls | where type==file
+ls | where type == file
+mv Complex.hs src/
+ll
+ls
+hx src/
+mv src/julia.hs src/Algorithms.hs
+ghcide
+ghc --version
+which ghc
+ghcup --help
+ghcup upgrade
+ghcup install ghc 9.6.2
+ghcup tui
+hx src/
+stack build
+hx src/Algorithms.hs
+hx src/Complex.hs
+stack build
+z --help
+z dotfiles
+ls
+exa
+exa -a
+cd .config/
+exa -a
+hx stack.yaml
+stack build
+exa -T
+hx src/Complex.hs
+stack build
+hx src/Complex.hs
+rm src/Complex.hs
+stack build
+hx src/Algorithms.hs src/Lib.hs
+hx zellij/config.kdl
+ghcup tui
+ghcup 
+$env.PATH
+cd .ghcup/
+ll
+ls
+exa bin
+ghci
+bin/ghcup tui
+exa
+bat 
+hx config.yaml
+exa ghc
+exa bin
+exa hls
+bin/ghcup -v
+bin/ghcup --version
+bin/ghcup tui
+($env.PATH | split row (char esep) | append "~/.ghcup/bin")
+$env.PATH
+($env.PATH | split row (char esep))
+($env.PATH | append "~/.ghcup/bin")
+$env.HOME
+z dotfiles/.config
+z dotfiles
+cd .config/nushell/
+exa
+hx env.nu config.nu
+echo $"$env.HOME"
+echo "$env.HOME"
+$"$env.HOME"
+$"{$env.HOME}"
+$"${env.HOME}"
+$env.HOME/".ghcup"
+$env.HOME /".ghcup"
+path join $env.HOME ".ghcup"
+$env.HOME | path join ".ghcup"
+hx env.nu config.nu
+$env.HOME | path join ".ghcup"
+hx env.nu config.nu
+$env.me
+whoami
+if (woami == "adrian") {true} else {false}
+if (whoami == "adrian") {true} else {false}
+let me = whoami; if ($me == "adrian") {true} else {false}
+let me = whoami; if ($me == "adrian ") {true} else {false}

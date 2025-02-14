@@ -1,0 +1,4 @@
+inherits = "papercolor-light"
+
+[palette]
+background = "#FAF4ED"

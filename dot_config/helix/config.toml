@@ -1,0 +1,13 @@
+theme = "papercolor-light-finetuned"
+
+[editor]
+line-number="relative"
+text-width=100
+true-color=true
+end-of-line-diagnostics = "hint"
+# shell="fish"
+
+[editor.cursor-shape]
+insert="bar"
+normal="block"
+select="underline"

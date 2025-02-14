@@ -1,0 +1,14 @@
+command = /opt/homebrew/bin/fish
+
+font-size = 18
+font-family = Iosevka Cosmic Light
+font-family-italic = Iosevka Cosmic Light Italic
+font-family-bold = Iosevka Cosmic
+font-family-bold-italic = Iosevka Cosmi Italic
+
+# theme = light:rose-pine-dawn,dark:rose-pine
+
+shell-integration-features = no-cursor
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness=125%

@@ -4,11 +4,14 @@ font-size = 18
 font-family = Iosevka Cosmic Light
 font-family-italic = Iosevka Cosmic Light Italic
 font-family-bold = Iosevka Cosmic
-font-family-bold-italic = Iosevka Cosmi Italic
+font-family-bold-italic = Iosevka Cosmic Italic
 
-# theme = light:rose-pine-dawn,dark:rose-pine
+theme = dark:rose-pine
 
 shell-integration-features = no-cursor
 cursor-style = bar
 cursor-style-blink = false
 adjust-cursor-thickness=125%
+
+window-padding-x=2
+window-padding-y=2

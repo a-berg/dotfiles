@@ -3,3 +3,11 @@ name = "python"
 language-servers = [ "basedpyright" , "ruff"]
 formatter = { command = "ruff", args = ["format", "-" ] }
 auto-format = true
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
+[language-server.tinymist]
+command = "tinymist"
+config = { exportPdf = "onSave", formatterMode = "typstyle" }

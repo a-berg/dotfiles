@@ -6,6 +6,7 @@ font-family-italic = Iosevka Cosmic Light Italic
 font-family-bold = Iosevka Cosmic
 font-family-bold-italic = Iosevka Cosmic Italic
 
+macos-option-as-alt = left
 theme = light:rose-pine-dawn,dark:rose-pine
 
 shell-integration-features = no-cursor

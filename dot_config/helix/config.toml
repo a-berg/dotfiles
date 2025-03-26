@@ -7,6 +7,9 @@ true-color=true
 end-of-line-diagnostics = "hint"
 # shell="fish"
 
+[editor.inline-diagnostics]
+other-lines = "error"
+
 [editor.cursor-shape]
 insert="bar"
 normal="block"

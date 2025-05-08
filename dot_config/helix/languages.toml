@@ -11,3 +11,7 @@ language-servers = ["tinymist"]
 [language-server.tinymist]
 command = "tinymist"
 config = { exportPdf = "never", formatterMode = "typstyle" }
+
+[[language]]
+name = "rust"
+formatter = { command = "rustfmt" }

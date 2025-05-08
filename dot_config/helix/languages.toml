@@ -15,3 +15,4 @@ config = { exportPdf = "never", formatterMode = "typstyle" }
 [[language]]
 name = "rust"
 formatter = { command = "rustfmt" }
+auto-format = true

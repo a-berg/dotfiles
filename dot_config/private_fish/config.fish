@@ -7,7 +7,7 @@ set -Ux EDITOR hx
 
 fish_add_path -Ua ~/.ghcup/bin/
 fish_add_path -Ua ~/.local/bin/
-fish_add_path -Ua /opt/homebrew/opt/llvm/bin/lldb-dap
+fish_add_path -Ua /opt/homebrew/opt/llvm/bin/
 
 starship init fish | source
 zoxide init fish | source

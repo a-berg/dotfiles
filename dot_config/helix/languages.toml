@@ -16,7 +16,6 @@ config = { exportPdf = "never", formatterMode = "typstyle" }
 name = "rust"
 formatter = { command = "rustfmt" }
 auto-format = true
-debugger = "lldb"
 
 [debugger.lldb]
 command = "/opt/homebrew/opt/llvm/bin/lldb-dap"
